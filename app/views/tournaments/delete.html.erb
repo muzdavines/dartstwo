@@ -1,0 +1,11 @@
+<p>Delete</p>
+
+<div class="tournaments delete">
+<%= form_for(@tournament, :url => tournament_path(@tournament), :method => 'delete') do |f| %>
+<p>Are you sure?</p>
+<p class="reference-name"><%= f.object.name %></p>
+<div class ="form-buttons">
+  <%= f.submit("Delete Tournament") %>
+</div>
+<% end %>
+</div>

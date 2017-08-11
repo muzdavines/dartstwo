@@ -1,0 +1,25 @@
+<% if !flash[:notice].blank? %>
+<div class ="notice">
+  <%= flash[:notice] %>
+  <div>
+    <% end %>
+
+<div class="Players index">
+  <h2>Players for</h2><%= @tournament.name %>
+  <%= link_to("Add New", new_player_path, :class => 'action new') %>
+  <table class="listing" summary="Players list">
+    <tr class ="header">
+    </tr>
+    
+    <% @players.where(tournament_id: @tournament.id).find_each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.total_points %></td>
+      <td class="actions">
+        <%= link_to("Show", player_path(player.id), :class => 'action show') %>
+        <%= link_to("Edit", edit_player_path(player.id), :class => 'action edit') %>
+        <%= link_to("Delete", delete_player_path(player.id), :class => 'action delete') %>
+    </tr>
+    <% end %>
+  </table>
+</div>

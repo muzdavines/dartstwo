@@ -1,0 +1,95 @@
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid orange;
+    padding: 10px;
+    text-align: left;
+  }
+</style>
+
+<table class = "listing" summary = "list">
+  <tr>
+<p>Name: <%=@tournament.name%></p>
+<p>Date: <%=@tournament.date%></p>
+<p>Winner: <%=@tournament.fantasy_winner%></p>
+<p>Champion: <%=@tournament.darts_winner%></p>
+</tr>
+<p><%= link_to "Add New Player", new_player_path(:tournamentID => @tournament.id)%></p>
+</p>
+<p><%= link_to "Draft Dart Players", new_darter_path(:tournamentID => @tournament.id)%></p>
+
+
+
+<header>Total Points</header>
+<% @tournament.players.each do |player| %>
+<% @thisPlayer = player %>
+<% total = 0 %>
+<% @thisPlayer.darters.each do |darter| %>
+<% @thisDarter = darter %>
+<% @thisDarter.rounds.each do |round| %>
+<% @thisRound = round %>
+<% total = total + round_total(@thisRound) %>
+<% end %>
+<% end %>
+
+<%= @thisPlayer.name%>: <%= total %></br>
+<% end %>
+</p>
+<% headerLine = ["Name", "Round 1", "Round 2", "Round 3", "Round 4", "Round 5", "Round 6", "Round 7","Total"] %>
+<table class = "listing" summary "list">
+  <tr>
+      <% headerLine.each do |h| %>
+        <th bgcolor="#FF0000"><%=h%></th>
+      <% end %>
+  </tr>
+<% @tournament.players.each do |player| %>
+<% @thisPlayer = player %>
+
+<tr><td bgcolor="#FFAA00"><b><%=@thisPlayer.name%></b><td></tr>
+
+<% array = [] %>
+
+<% @thisPlayer.darters.each do |darter| %>
+  <% @thisDarter = darter %>
+  <%thisLine = Array.new(10)%>
+  <%thisLine[0] = @thisDarter.name%>
+  <% allRoundTotal = 0 %>
+  <% count = 0 %>
+<% @thisDarter.rounds.each do |round| %>
+<% @thisRound = round %>
+<% allRoundTotal = allRoundTotal + round_total(@thisRound) %>
+<% count=count+1 %>
+<% thisLine[count] = round_total(@thisRound) %>
+<%#= round_total(@thisRound) %>
+<% end %>
+<% thisLine[8] = allRoundTotal %>
+<b><%#= allRoundTotal %></b>
+<% array << thisLine %>
+<% end %>
+
+
+
+<% array.each do |a|%>
+<tbody>
+<tr>
+  <% a.each do |i|%>
+  <td><%=i%></td>
+  <% end %>
+  <%@thisDarter = Darter.includes([:player]).where(name: a[0])%>
+  <% @thisDarter.each do |d| %>
+  <% if (d.player.tournament.id == @tournament.id) %>
+    <td><%= link_to "Rounds", rounds_path(:darterID=> d.id)%>
+  <% end %>
+  <% end %>
+
+
+</tr>
+<% end %><%#array each%>
+</tbody>
+
+<% end %>
+</table>
+</p>
+<%= link_to "Back", tournaments_path %>

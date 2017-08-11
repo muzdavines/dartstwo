@@ -1,0 +1,14 @@
+<%= form_for(@player) do |f| %>
+
+<table summary = "Player form fields">
+  <tr>
+    <th>Name</th>
+    <td><%= f.text_field(:name) %></td>
+    <td><%= f.text_field(:tournament_id) %></td>
+  </tr>
+</table>
+<div class ="form-buttons">
+<%= f.submit("Create") %>
+</div>
+
+<% end %>

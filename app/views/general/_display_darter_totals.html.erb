@@ -1,0 +1,10 @@
+<% @totalPoints = 0 %>
+<% @thisPlayer.darters.each do |darter| %>
+<%= darter.name %>
+<% darter.rounds.each do |round| %>
+<% for attribute in round.attributes.keys %>
+  <%= attribute.humanize %> <%= round.attributes[attribute].to_s %>
+<% end %>
+<% end %>
+<% end %>
+<%= @totalPoints %>

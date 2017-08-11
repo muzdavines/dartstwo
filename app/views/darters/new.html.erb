@@ -1,0 +1,31 @@
+<%= form_for(@darter) do |f| %>
+<%= @tournament.name %>
+<table summary = "Darter form fields">
+  <tr>
+    <th>Name</th>
+    <td><%= f.text_field(:name) %></td>
+    <%= hidden_field_tag(:tournamentID, @tournament.id) %>
+    <% array = [] %>
+    <% @tournament.players.each do |p| %>
+      <% array << [p.name, p.id] %>
+    <% end %>
+  </p>Owner: <%= f.select :player_id, array %>
+
+  </tr>
+</table>
+<div class ="form-buttons">
+
+<%= f.submit("Create") %>
+</div>
+<% end %>
+<table>
+<% @tournament.players.each do |p| %>
+<tr><b><%=p.name %></b></tr>
+<% p.darters.each do |d| %>
+<p><%=d.name%>
+<%= link_to("Delete", delete_darter_path(d.id, :tournamentID=>@tournament.id), :class => 'action delete') %>
+</p>
+<%end %>
+<%end %>
+
+<%= link_to("Back", tournament_path(@tournament.id), :class => 'action show') %>

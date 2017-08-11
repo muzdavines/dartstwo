@@ -1,0 +1,23 @@
+<%= form_for(@tournament) do |f| %>
+
+<table summary = "Tournament form fields">
+  <tr>
+    <th>Name</th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td><%= f.date_field(:date) %></td>
+  </tr>
+  <th>Fantasy Winner</th>
+  <td><%= f.text_field(:fantasy_winner) %></td>
+</tr>
+  <th>Darts Winner</th>
+  <td><%= f.text_field(:darts_winner) %></td>
+</tr>
+</table>
+<div class ="form-buttons">
+<%= f.submit("Create") %>
+</div>
+
+<% end %>

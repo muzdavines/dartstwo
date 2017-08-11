@@ -1,0 +1,19 @@
+<%= form_for(@round) do |f| %>
+<header><b><%= @round.darter.name %></b></header>
+<table summary = "Round form fields">
+  <tr>
+
+<% protected = ["id", "darter_id", "created_at", "updated_at"] %>
+  <% @round.attributes.each_pair do |thisName, value|%>
+  <%=thisName.humanize%> <%= f.text_field(thisName) %><br>
+  <% end %>
+<%= hidden_field_tag(:darterID, @round.darter.id) %>
+
+  </tr>
+</table>
+<div class ="form-buttons">
+
+<%= f.submit("Create") %>
+</div>
+
+<% end %>

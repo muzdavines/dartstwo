@@ -1,0 +1,12 @@
+<p>Delete Darter</p>
+
+<div class="darters delete">
+<%= form_for(@darter, :url => darter_path(@darter), :method => 'delete') do |f| %>
+<p>Are you sure?</p>
+<%= hidden_field_tag(:tournamentID, @tournament.id) %>
+<p class="reference-name"><%= f.object.name %></p>
+<div class ="form-buttons">
+  <%= f.submit("Delete Darter") %>
+</div>
+<% end %>
+</div>

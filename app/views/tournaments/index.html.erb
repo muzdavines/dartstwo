@@ -1,0 +1,24 @@
+<% if !flash[:notice].blank? %>
+<div class ="notice">
+  <%= flash[:notice] %>
+  <div>
+    <% end %>
+
+<div class="tournaments index">
+  <h2>Tournaments</h2>
+  <%= link_to("Add New", new_tournament_path, :class => 'action new') %>
+  <table class="listing" summary="Tournament list">
+    <tr class ="header">
+    </tr>
+    <% @tournaments.each do |tournament| %>
+    <tr>
+      <td><%= tournament.name %></td>
+      <td><%= tournament.date %></td>
+      <td class="actions">
+        <%= link_to("Show", tournament_path(tournament.id), :class => 'action show') %>
+        <%= link_to("Edit", edit_tournament_path(tournament.id), :class => 'action edit') %>
+        <%= link_to("Delete", delete_tournament_path(tournament.id), :class => 'action delete') %>
+    </tr>
+    <% end %>
+  </table>
+</div>
