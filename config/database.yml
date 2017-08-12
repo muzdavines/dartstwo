@@ -88,6 +88,6 @@ test:
 #
 production:
   <<: *default
-    database: dartstwo_production
+  database: dartstwo_production
   username: chauncey
   password: weaver69
