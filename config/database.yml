@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: muzdavines
+  username: deploy
   database: dartstwo_development
   password: weaver69
   # For details on connection pooling, see Rails configuration guide
@@ -89,5 +89,5 @@ test:
 production:
   <<: *default
   database: dartstwo_production
-  username: chauncey
+  username: deploy
   password: weaver69
