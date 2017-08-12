@@ -1,7 +1,7 @@
 # Change these
 server '104.131.21.90', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'https://github.com/muzdavines/dartstwo'
+set :repo_url,        'https://github.com/muzdavines/dartstwo.git'
 set :application,     'dartstwo'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]

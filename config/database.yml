@@ -28,8 +28,9 @@ development:
   adapter: postgresql
   encoding: unicode
   database: dartstwo_development
-  username: deploy
+  username: muzdavines
   password: weaver69
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
   # The specified database role being used to connect to postgres.
@@ -88,5 +89,5 @@ test:
 production:
   <<: *default
   database: dartstwo_production
-  username: dartstwo
-  password: <%= ENV['DARTSTWO_DATABASE_PASSWORD'] %>
+  username: muzdavines
+  password: weaver69
