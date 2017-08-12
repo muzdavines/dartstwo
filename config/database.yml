@@ -90,4 +90,4 @@ production:
   <<: *default
   database: dartstwo_production
   username: muzdavines
-  password: weaver69
+  #password: weaver69
