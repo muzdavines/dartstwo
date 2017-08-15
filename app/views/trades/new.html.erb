@@ -1,0 +1,30 @@
+<% @title = "New trade" %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+</p>
+      <%= form_for(@trade) do |f| %>
+
+      <table summary = "New Trade">
+        <tr>
+
+      <% protected = ["id", "darter_id", "created_at", "updated_at", "offerer_id", "offeree_id", "offerer_email"] %>
+        <% @trade.attributes.each_pair do |thisName, value|%>
+        <% unless protected.include?(thisName) %>
+
+        <%=thisName.humanize%>
+
+        <%= f.text_field(thisName) %><br>
+        <% end %>
+        <% end %>
+        </tr>
+      </table>
+      <div class ="form-buttons">
+
+      <%= f.submit("Create") %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

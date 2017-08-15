@@ -1,0 +1,17 @@
+<%# Links for current user. %>
+<%unless session[:user_id] == nil %>
+
+
+<nav class='navbar'>
+  <div class='navbar-brand'>
+    My App
+  </div>
+  <div class="navbar-text pull-right">
+
+    <%= fa_icon_tag "user" %> Welcome, <strong><%= "User" %></strong>
+    <span class="divider">|</span>
+    <%= link_to "Settings", "#" %>
+
+  </div>
+</nav>
+<%end%>

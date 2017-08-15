@@ -1,0 +1,45 @@
+<% @title = "Listing users" %>
+
+<% content_for :description do %>
+<p>Edit this template in <code>app/views/Users/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+<%= link_to new_user_path, class: 'btn btn-primary btn-large pull-right' do %>
+<%= fa_icon_tag "plus" %> Add User
+<% end %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="sheet sheet-condensed">
+        <div class="sheet-inner">
+          <table class="table">
+            <thead>
+              <tr>
+                                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+              <tr><td><%=user.name%></td>
+                                <td class="actions">
+                  <%= link_to fa_icon_tag("eye"), user, rel: 'tooltip', title: 'Show' %>
+                  <%= link_to fa_icon_tag("pencil"), edit_user_path(user), rel: 'tooltip', title: 'Edit' %>
+                  <%= link_to fa_icon_tag("trash-o"), user, rel: 'tooltip', title: 'Delete',
+                  data: { confirm: 'Are you sure?' }, method: :delete %>
+                </td>
+              </tr>
+              <% end %>
+              <% if @users.length == 0 %>
+              <tr><td colspan=42 class='text-center'>No users.</td></tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div><!-- /.sheet-inner -->
+      </div><!-- /.sheet -->
+
+                </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<% @title = "Listing tradeviews" %>
+
+<% content_for :description do %>
+<p>Edit this template in <code>app/views/Tradeviews/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+<%= link_to new_tradeview_path, class: 'btn btn-primary btn-large pull-right' do %>
+<%= fa_icon_tag "plus" %> Add Tradeview
+<% end %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="sheet sheet-condensed">
+        <div class="sheet-inner">
+          <table class="table">
+            <thead>
+              <tr>
+                                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tradeviews.each do |tradeview| %>
+              <tr>
+                                <td class="actions">
+                  <%= link_to fa_icon_tag("eye"), tradeview, rel: 'tooltip', title: 'Show' %>
+                  <%= link_to fa_icon_tag("pencil"), edit_tradeview_path(tradeview), rel: 'tooltip', title: 'Edit' %>
+                  <%= link_to fa_icon_tag("trash-o"), tradeview, rel: 'tooltip', title: 'Delete',
+                  data: { confirm: 'Are you sure?' }, method: :delete %>
+                </td>
+              </tr>
+              <% end %>
+              <% if @tradeviews.length == 0 %>
+              <tr><td colspan=42 class='text-center'>No tradeviews.</td></tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div><!-- /.sheet-inner -->
+      </div><!-- /.sheet -->
+
+                </div>
+  </div>
+</div>

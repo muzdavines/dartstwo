@@ -1,0 +1,45 @@
+<% @page_title = "Aragon Trading Platform" %>
+<div class="menu">
+  <h2>Aragon Trading Platform</h2>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="panel panel-metric">
+        <div class="panel-body">
+          <div class="metric-content">
+            <div class="row">
+              <header class="col-xs-12" align="center">
+                <h3>Login</h3>
+              </header>
+              <div class="login" align="center">
+                <%= form_tag(access_attempt_login_path, :method => :post) do %>
+                <table>
+                  <tr>
+                    <td><%= label_tag(:email) %> </td>
+                    <td><%= text_field_tag(:email, params[:email]) %> </td>
+                  </tr>
+                  <tr>
+                    <td><%= label_tag(:password) %></td>
+                    <td><%= password_field_tag(:password) %></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><%= submit_tag("Log In") %></td>
+                    <td>&nbsp;</td>
+                    <td><%= link_to new_user_path, class: 'btn btn-primary btn-large pull-right' do %>
+                    <%= fa_icon_tag "user" %> Create Account
+
+                    <% end %></td>
+                  </tr>
+                </table>
+                <% end %>
+              </div>
+              <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                Button for Create
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

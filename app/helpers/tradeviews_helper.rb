@@ -1,0 +1,2 @@
+module TradeviewsHelper
+end

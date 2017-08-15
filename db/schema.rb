@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802224542) do
+ActiveRecord::Schema.define(version: 20170815031800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,46 @@ ActiveRecord::Schema.define(version: 20170802224542) do
     t.date "date"
     t.string "fantasy_winner"
     t.string "darts_winner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trades", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "transDirection", limit: 50
+    t.string "iso", limit: 10
+    t.string "loc", limit: 10
+    t.string "settlement", limit: 30
+    t.string "product", limit: 30
+    t.date "start_date"
+    t.date "end_date"
+    t.string "mw_peak", limit: 30
+    t.string "mw_wrap", limit: 30
+    t.float "price_peak"
+    t.float "price_wrap"
+    t.integer "term"
+    t.integer "offerer_id"
+    t.integer "offeree_id"
+    t.string "offerer_email"
+    t.string "offeree_email"
+  end
+
+  create_table "trades_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "trade_id"
+    t.index ["user_id", "trade_id"], name: "index_trades_users_on_user_id_and_trade_id"
+  end
+
+  create_table "tradeviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

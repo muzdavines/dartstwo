@@ -1,0 +1,2 @@
+class Tradeview < ApplicationRecord
+end
