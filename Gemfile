@@ -64,7 +64,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 source "https://dresssed.com/gems/dresssed" do
-  gem "dresssed-ives", "~> 1.0.55"
+  gem "dresssed-ives", "~> 1.0.55" --no-verify
 end
 
 gem 'jquery-rails'
