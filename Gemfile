@@ -63,9 +63,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#source "https://dresssed.com/gems/dresssed" do
-#  gem "dresssed-ives", "~> 1.0.55"
-#end
+source "https://dresssed.com/gems/dresssed" do
+  gem "dresssed-ives", "~> 1.0.55"
+end
 
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
