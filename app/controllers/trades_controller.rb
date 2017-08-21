@@ -1,3 +1,4 @@
+require ('csv')
 class TradesController < ApplicationController
   before_action :set_trade, only: [:show, :edit, :update, :destroy]
   layout 'sidenav'
@@ -28,18 +29,30 @@ class TradesController < ApplicationController
   # POST /trades.json
   def create
     @trade = Trade.new(trade_params)
+    @trade.offerer_email = User.find(session[:user_id]).email
+      if (@trade.save)
+        NotifierMailer.newtrade(@trade).deliver_now
+        flash.now[:notice] = "Trade was successfully sent."
+        id = @trade.id
+        CSV.open("#{id}trade.csv", "wb") do |csv|
+            @trade.attributes.each do |name, value|
+            csv << [name, value]
+            end
+          
+          end
 
-    respond_to do |format|
-      if @trade.save
-        format.html { redirect_to @trade, notice: 'Trade was successfully created.' }
-        format.json { render :show, status: :created, location: @trade }
+        redirect_to posttrade_trade_path(id: @trade.id)
       else
-        format.html { render :new }
-        format.json { render json: @trade.errors, status: :unprocessable_entity }
+        render :new
       end
     end
-  end
-
+    def posttrade
+      @trade_id = params[:id]
+    end
+    def download
+      id = params[:id]
+      send_file "#{id}trade.csv"
+    end
   # PATCH/PUT /trades/1
   # PATCH/PUT /trades/1.json
   def update

@@ -3,25 +3,19 @@
     <div class="col-lg-3 col-md-6 col-sm-12 animate-drop-fade">
       <div class="panel panel-danger">
         <div class="panel-heading">
-          <p class="lead"><i class="fa fa-globe"></i> TOTAL <b>PAGE HITS</b></p>
+          <p class="lead"><i class="fa fa-btc"></i> Bitcoin</b></p>
         </div>
         <div class='panel-body text-red-400'>
-          <h2 class='page-hits m0'>1123</h2>
+          <div id="coindesk-widget"></div>
+<script type="text/javascript" src="//widget.coindesk.com/bpiticker/coindesk-widget.min.js"></script>
         </div>
-        <div class="panel-footer">
-          <div class="row">
-            <div class="col-sm-12">
-              <i class="fa fa-caret-down"></i> <b>10%</b> decrease in page hits.
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
+
       </div>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12 animate-drop-fade">
       <div class="panel panel-info">
         <div class="panel-heading">
-          <p class="lead"><i class="fa fa-trophy"></i> TOTAL <b>SALES</b></p>
+          <p class="lead"><i class="fa fa-trophy"></i> Sales</b></p>
         </div>
         <div class='panel-body text-light-blue-400'>
           <h2 class="m0">$12,121</h2>
@@ -81,50 +75,36 @@
           <div class="metric-content">
             <div class="row">
               <header class="col-xs-12">
-                <h3>Monthly Earnings</h3>
+                <h3>NFL News</h3>
               </header>
-              <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="min-height: 150px;">
-                <div class='metric-graph' id='metric-monthly-earnings' style='height:150px;'></div>
-              </div>
-              <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                <div class="metric-value">
-                  $19,821
-                  <small>CURRENT</small>
-                </div>
-                <div class="metric-trend">
-                  <p class="text-success">
-                    <i class="fa fa-chevron-up"></i> 12%
-                  </p>
-                  <small>30 Days Ago</small>
-                </div>
-              </div>
+              <div><iframe src="http://www.fantasylabs.com/nfl/widgets/news/" align="right" style="width: 550px; height: 500px;" frameborder="0"></iframe></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <div class="panel panel-metric">
         <div class="panel-body">
           <div class="metric-content">
             <div class="row">
               <header class="col-xs-12">
-                <h3>Cancellations</h3>
+                <h3>Prices</h3>
               </header>
               <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="min-height: 150px;">
-                <div class='metric-graph' id='metric-cancellations' style='height:150px;'></div>
+                <p><a target="blank" href="http://www.quandl.com/SCF/CME_NG1_FW?utm_source=quandl&amp;utm_medium=graph"><img alt="Chart of CME NYMEX Natural Gas Futures (NG) Front Contract" src="http://www.quandl.com/SCF/CME_NG1_FW.png?&amp;dataset[width]=500&amp;dataset[height]=250&amp;dataset[visible_columns]=3&amp;dataset[trim_start]=2014-01-01&amp;dataset[graph_title]=nymex natural gas Last 1 Year"></a></p>
               </div>
               <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                <div class="metric-value">
+                <!--<div class="metric-value">
                   123
-                  <small>CURRENT</small>
+                  <small>Outstanding</small>
                 </div>
                 <div class="metric-trend">
                   <p class="text-success">
                     <i class="fa fa-chevron-up"></i> 12%
                   </p>
-                  <small>30 Days Ago</small>
-                </div>
+                  <small>Last 30 days</small>
+                </div>-->
               </div>
             </div>
           </div>

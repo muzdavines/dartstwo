@@ -1,0 +1,7 @@
+<%=@trade.offerer_email%> has sent you a trade:
+<% protected = ['id', 'created_at', 'updated_at', 'offerer_id', 'offeree_id', 'offeree_email'] %>
+<% @trade.attributes.each_pair do |name, value| %>
+  <% unless protected.include? name %>
+  <%=name.humanize%>: <%=value%>
+<%end%>
+<%end%>

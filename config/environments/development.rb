@@ -45,6 +45,21 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+       :address => "smtp.gmail.com",
+       :port => 587,
+       :user_name => "aragontradingplatform@gmail.com",
+       :password => "Barcelona2017!!!",
+       :authentication => :plain,
+       :enable_starttls_auto => true
+  }
+
+config.action_mailer.raise_delivery_errors = true
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

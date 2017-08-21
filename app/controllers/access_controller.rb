@@ -6,9 +6,15 @@ class AccessController < ApplicationController
   end
 
   def login
+      unless session[:user_id] == nil
+        redirect_to("/home/dashboard")
+      end
   end
 
   def landing
+    unless session[:user_id] == nil
+      redirect_to("/home/dashboard")
+    end
   end
 
   def attempt_login
@@ -24,8 +30,8 @@ class AccessController < ApplicationController
       flash[:notice] = "Logged In."
       redirect_to("/home/dashboard")
     else
-      flash.now[:notice] = "Invalid."
-      render('login')
+      flash.now[:notice] = "Invalid Entry."
+      render("landing")
     end
 
   end
@@ -33,7 +39,7 @@ class AccessController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:notice] = "Logged Out."
-    redirect_to(admin_path)
+    redirect_to root_path
   end
 
   private

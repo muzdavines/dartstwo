@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  layout 'home'
+  before_action :set_user, only: [:show, :edit, :update, :destroy], except:[:welcome]
 
   # GET /users
   # GET /users.json
@@ -26,15 +27,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        NotifierMailer.welcome(@user).deliver_now
+        session[:user_id] = @user.id
+        flash.now[:notice] = "User was successfully created."
+        redirect_to welcome_user_path(id: @user.id)
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+
+        render :new
+        #format.json { render json: @user.errors, status: :unprocessable_entity }
+
     end
+  end
+
+  def welcome
+    @user = User.find(session[:user_id])
   end
 
   # PATCH/PUT /users/1
