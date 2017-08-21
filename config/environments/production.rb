@@ -86,16 +86,7 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.smtp_settings = {
-       :address => "smtp.gmail.com",
-       :port => 587,
-       :user_name => "aragontradingplatform@gmail.com",
-       :password => "Barcelona2017!!!",
-       :authentication => :plain,
-       :enable_starttls_auto => true
-  }
+  
 
 
 config.action_mailer.raise_delivery_errors = true
