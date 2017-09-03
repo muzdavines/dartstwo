@@ -53,6 +53,9 @@ class TournamentsController < ApplicationController
     end
 
     def round_total(thisRound)
+      if (thisRound["180"] == nil)
+        thisRound["180"] = 0
+      end
       score = (thisRound["180"]*3)+(thisRound["140"]*1)+(thisRound["170"]*5)+(thisRound["ton_plus"]*3)+(thisRound["9_dart"]*50)+(thisRound["legs"]*0.5)
 
       return score
