@@ -4,6 +4,8 @@
   <tr>
 
 <% protected = ["id", "darter_id", "created_at", "updated_at"] %>
+<% roundCount = @darter.rounds.size + 1 %>
+<% @round["name"] = "Round " + roundCount.to_s %>
   <% @round.attributes.each_pair do |thisName, value|%>
   <%=thisName.humanize%> <%= f.text_field(thisName) %><br>
   <% end %>
