@@ -60,8 +60,11 @@ class RoundsController < ApplicationController
       params.require(:round).permit(:darter_id, :champion, :win, "180", "140", "170", "ton_plus", "9_dart", "legs", "score", "name")
     end
     def round_total(thisRound)
+      if (thisRound["180"] == nil)
+        thisRound["180"] = 0
+      end
       score = (thisRound["180"]*3)+(thisRound["140"]*1)+(thisRound["170"]*5)+(thisRound["ton_plus"]*3)+(thisRound["9_dart"]*50)+(thisRound["legs"]*0.5)
-      
+
       return score
     end
 end
